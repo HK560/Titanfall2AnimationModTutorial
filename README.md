@@ -94,9 +94,26 @@
 
 ![](https://cdn.jsdelivr.net/gh/HK560/MyPicHub@master/res/pic/20230604151218.png)
 
-通过这样分析查看每个`$sequence`，区分出每个动画文件是delta还是非delta。我知道这非常麻烦，但这是必须步骤，需要对一百多个动画文件分类，这样后面制作动画时候才能不会破坏动画。
+通过这样分析查看每个`$sequence`，区分出每个动画文件是delta还是非delta。我知道这听起来十分麻烦，但这是必须步骤，需要对一百多个动画文件分类，这样后面制作动画时候才能不会破坏动画。
 
-我推荐新建两个文件夹，单独存放delta动画文件和非delta动画文件。
+为了方便称呼，后文会将delta动画称之为`delta动画`，非delta动画称之为`nodelta动画`。
+
+#### 快速分类动画
+接下来介绍一个能够快速分类这些delta和nodelta动画的方法。
+
+在我们使用crowbar对mdl进行反编译时，请按照下图的设置，尤其是和红框内的设置一样
+
+![](https://cdn.jsdelivr.net/gh/HK560/MyPicHub@master/res/pic/20230609145558.png)
+
+然后我们进行反编译，这样反编译得到的动画文件每行会带有如下图的注释说明
+
+![](https://cdn.jsdelivr.net/gh/HK560/MyPicHub@master/res/pic/20230609145858.png)
+
+然后使用我的bat脚本，你可以从仓库下载，或者自己新建一个bat编辑复制我的代码进去。把这个bat脚本放到同动画文件目录下运行。
+
+![](https://cdn.jsdelivr.net/gh/HK560/MyPicHub@master/res/pic/20230609150410.png)
+
+脚本运行完成后会提示复制了多少个delta文件和nodelta文件，此时你会发现该目录下会多出两个文件夹，里面分别是delta动画和nodelta动画。这样你就分类好了动画文件。
 
 ![](https://cdn.jsdelivr.net/gh/HK560/MyPicHub@master/res/pic/20230604153722.png)
 
