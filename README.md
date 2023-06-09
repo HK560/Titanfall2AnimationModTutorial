@@ -10,12 +10,12 @@
 4. 泰坦陨落2的第一人称手臂模型
 
 ## 需要的软件
-1. Blender v3.3
-2. Blender插件 `Bone Animation Copy Tool`
+1. Blender v2.3+
+2. Blender插件 `Bone Animation Copy Tool`（可以在github上搜索该插件）
 3. Blender插件 `Blender Source Tools`
-4. mdlshit2.3.2
+4. mdlshit v2.3.2
 5. Tianfall VPK Tool
-
+6. Crowbar 0.74+
 
 
 
@@ -306,10 +306,11 @@ nodelta的动画都是完整的动画，有了骨架之后导入这些动画，�
 
 移植动画大概就是这样，但是我们制作武器mod的过程肯定不会那么直接。正常来说我们要先调整模型处理模型还有骨骼，制作动画是最后一步，但因为本教程重点是移植武器动画所以这些步骤都忽略了。
 
+如果你只修改这些nodelta动画进行编译，进入游戏后你可能会发现模型位置不对，动画异常，这是因为你还没有将delta动画进行处理，下面讲解如何处理delta动画，这是十分重要的一步。
 
 
 --------------------------------
-### 处理delta动画
+### 处理delta动画（十分重要）
 
 在详细的步骤之前，我们需要明白为什么要处理delta动画，和处理的原理。
 
@@ -365,7 +366,9 @@ nodelta的动画都是完整的动画，有了骨架之后导入这些动画，�
 
 当所有骨骼的位置和朝向都一致没问题后我们`Ctrl + A`应用为静置姿态。
 
-接下来导入所有的delta动画，然后依次选择每个动画并直接导出，这样我们就能得到含有新骨骨骼的所有elta动画了（步骤同上面导出nodelta动画一样）。
+接下来导入所有的delta动画，然后依次选择每个动画并直接导出，这样我们就能得到含有新骨骨骼的所有delta动画了（步骤同上面导出nodelta动画一样）。
+
+用这些新的delta动画替换原本的delta动画进行编译即可。
 
 
 ---------------------------------------------------
@@ -441,3 +444,8 @@ $sequence "AAA" "v_desert_eagle.smd"
 
 然后使用crowbar进行编译得到mdl文件，再将mdl文件使用crowbar进行反编译，就能得到你想要的delta动画了，如果按照上面的qc文件内容，最后会得到名为“attack_anim.smd”的delta动画文件。
 
+### 注意事项/小技巧
+
+- 推荐删除qc文件中原来的`$definebone`,使用由crowbar编译你新的合并骨架的模型文件得到的$definebone是比较好的选择。
+- 可以添加额外新的的动画`$animation`和动画序列`$sequence`,但是不能破坏原来的qc文件中的`$sequence`顺序，否则会导致非本地游玩不能正确调用动画要添加新的就在qc最后面添加。
+- 如果你需要编译的模型有大量的材质，和超多的骨骼数，那么普通游戏的`studiomdl`往往是不能将其编译的。你可以下载使用CSGO的SDK，然后安装`Cra0`的修改版`studiomdl`（[链接](https://cra0.net/blog/posts/archived/2014/studiomdl-2013/)）
