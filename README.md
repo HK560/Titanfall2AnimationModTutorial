@@ -109,7 +109,7 @@
 
 ![](https://cdn.jsdelivr.net/gh/HK560/MyPicHub@master/res/pic/20230609145858.png)
 
-然后使用我的bat脚本，你可以从仓库下载，或者自己新建一个bat编辑复制我的代码进去。把这个bat脚本放到同动画文件目录下运行。
+然后使用我的[bat脚本](https://raw.githubusercontent.com/HK560/Titanfall2AnimationModTutorial/main/CategoryAnimFile.bat)，你可以从仓库下载，或者自己新建一个bat编辑复制我的代码进去。把这个bat脚本放到同动画文件目录下运行。
 
 ![](https://cdn.jsdelivr.net/gh/HK560/MyPicHub@master/res/pic/20230609150410.png)
 
